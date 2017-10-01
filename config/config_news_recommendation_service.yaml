@@ -1,0 +1,14 @@
+service:
+    SERVER_HOST : 'localhost'
+    SERVER_PORT : 5050
+    PREFERENCE_MODEL_TABLE_NAME : 'user_preference_model'
+ 
+click_log_processor:
+    NUM_OF_CLASSES : 17
+    INITIAL_P : 0.058823529 # 1/NUM_OF_CLASSES
+    ALPHA : 0.1
+    SLEEP_TIME_IN_SECONDS : 1
+    LOG_CLICKS_TASK_QUEUE_URL : 'amqp://dqpnlwys:qquf8BUJoJk4wkWmu41rnTjfzmBHpzo9@crane.rmq.cloudamqp.com/dqpnlwys'
+    LOG_CLICKS_TASK_QUEUE_NAME : 'popular-news-log-clicks-task-queue'
+    PREFERENCE_MODEL_TABLE_NAME : 'user_preference_model'
+    NEWS_TABLE_NAME : 'NEWS'

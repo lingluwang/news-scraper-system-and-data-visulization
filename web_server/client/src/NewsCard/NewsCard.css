@@ -1,0 +1,36 @@
+.news-intro-col {
+    display: inline-flex;
+    color: black;
+    height:100%;
+    size:16px;
+}
+
+
+.news-intro-panel {
+    margin: auto 5px;
+    text-align: left;
+}
+
+.news-intro-panel h4{
+    font-size: 20px;
+}
+
+
+.news-description {
+    text-align: left;
+}
+
+.news-description p {
+    font-size: 12px;
+}
+
+.news-chip {
+    font-size: 9px;
+}
+
+.fill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}

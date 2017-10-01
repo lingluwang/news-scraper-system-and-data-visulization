@@ -1,0 +1,7 @@
+--2017-08-26 12:34:22--  https://boostrap.pypa.io/get-pip.py
+Resolving boostrap.pypa.io (boostrap.pypa.io)... 92.242.140.2
+Connecting to boostrap.pypa.io (boostrap.pypa.io)|92.242.140.2|:443... failed: Connection timed out.
+Retrying.
+
+--2017-08-28 10:44:54--  (try: 2)  https://boostrap.pypa.io/get-pip.py
+Connecting to boostrap.pypa.io (boostrap.pypa.io)|92.242.140.2|:443... failed: No route to host.

@@ -1,0 +1,22 @@
+.container {
+    width: 50%;
+    padding-top: 50px;
+    
+}
+
+.text {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    
+}
+
+.SignupTitle {
+    text-align: left;
+    color: #012359;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-weight: bold;
+}
+
+.error-message {
+    margin-left: 3%;
+    color: hsla(0, 100%, 47%, 0.91);
+}

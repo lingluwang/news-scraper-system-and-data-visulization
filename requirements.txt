@@ -1,0 +1,9 @@
+Flask
+newspaper
+pika
+python-dateutil
+python-jsonrpc
+pymongo
+redis
+requests
+sklearn

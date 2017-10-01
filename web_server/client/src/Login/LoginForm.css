@@ -1,0 +1,29 @@
+.container {
+    width: 50%;
+    padding-top: 50px;
+    
+}
+
+.text {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    
+}
+.error-message {
+    margin-left: 3%;
+}
+
+.pswReset {
+    margin-left: 3%;
+}
+
+.LoginTitle {
+    text-align: left;
+    color: #012359;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    font-weight: bold;
+}
+
+.error-message {
+    font-size: 14px;
+    color: hsla(0, 100%, 47%, 0.91);
+}
