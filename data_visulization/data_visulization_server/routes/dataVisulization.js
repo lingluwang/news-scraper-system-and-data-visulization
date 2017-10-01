@@ -1,120 +1,106 @@
 var express = require('express');
 var router = express.Router();
 
-//*****node js */
+const bodyParser = require('body-parser');
+const jsonParser = bodyParser.json();
+
+//*****node js to call a REST Service */
+const nodeRestClient = require('node-rest-client').Client;
+const restClient = new nodeRestClient();
+const USER_STATISTICS_DATA_URL = 'http://localhost:5000/userStatisticsData';
+const USER_TREND_URL = 'http://localhost:5000/userTrend';
+const USER_DEVICE_URL = 'http://localhost:5000/userDevice';
+const NEWS_CATEGORY_URL = 'http://localhost:5000/newsCategory';
+const USER_ACTIVE_TIME_URL = 'http://localhost:5000/userActiveTimeDistribution';
+
+
+//register remote methods
+restClient.registerMethod('user_statistic_data', USER_STATISTICS_DATA_URL, 'GET');
+restClient.registerMethod('userTrend', USER_TREND_URL, 'GET');
+restClient.registerMethod('userDevice', USER_DEVICE_URL, 'GET');
+restClient.registerMethod('newsCategory', NEWS_CATEGORY_URL, 'GET');
+restClient.registerMethod('userActiveTimeDistribution', USER_ACTIVE_TIME_URL, 'GET');
 
 /*GET User Total Num, New User, Active User and Average Reading Info */
-router.get('/statistic', function(req,res,next){
+router.get('/statistic', jsonParser, function(req,res,next){
     console.log("Send user_data from data visulization server");
 
-    const headers = new Headers({'content-type': 'application/json'})
-    
+  //  user_data = null;
 
+    return restClient.methods.user_statistic_data(
+        {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        },
+        (data, response) => {
+            console.log(data);
+            res.json(data);
+        }
+    );
 
-    // const user_data = [
-    //     {
-    //         'title': 'Total Users',
-    //         'num':1300
-    //     },
-    //     {
-    //         'title': 'New Users (Today)',
-    //         'num':23
-    //     },
-    //     {
-    //         'title': 'Active Users (Today)',
-    //         'num':67
-    //     },
-    //     {
-    //         'title': 'Average Usage Time',
-    //         'num':12
-    //     }
-    // ];
-    
-    res.json(user_data);  
 });
 
 /*GET User Trend Data */
-router.get('/usertrend', function(req,res,next){
-    const userTrend = [
+router.get('/usertrend', jsonParser, function(req,res,next){
+    return restClient.methods.userTrend(
         {
-            name: 'New User',
-            data: [20, 50, 34, 20, 90,74, 110]
+            headers: {
+                'Content-Type': 'application/json'
+            }
         },
-        {
-            name: 'Active User',
-            data: [74, 110,50, 34, 20, 90,74]
+        (data, response) => {
+            console.log(data);
+            res.json(data);
         }
-    ];
-    
-    res.json(userTrend);  
+    );
+
 });
 
 /*GET User Device Data */
-router.get('/userdevice', function(req,res,next){
-    console.log("Send user_trend_data from data visulization server");
-    const deviceData = [
+router.get('/userdevice', jsonParser, function(req,res,next){
+    console.log("Send user_device from data visulization server");
+    return restClient.methods.userDevice(
         {
-            name: 'IOS',
-            y: 56.33,
-        }, {
-            name: 'Android',
-            y: 24.03,
-        }, {
-            name: 'MAC',
-            y: 10.38,
-        }, {
-            name: 'Windows',
-            y: 4.77,
-        }, {
-            name: 'Pad',
-            y: 0.91,
-        }, {
-            name: 'other',
-            y: 2
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        },
+        (data, response) => {
+            console.log(data);
+            res.json(data);
         }
-    ];
-    
-    res.json(deviceData);  
+    );
 });
 
 /*GET User news category Data */
-router.get('/newscategory', function(req,res,next){
-    const newCategory = [
+router.get('/newscategory', jsonParser, function(req,res,next){ 
+    return restClient.methods.newsCategory(
         {
-            name: 'technology',
-            y: 50
+            headers: {
+                'Content-Type': 'application/json'
+            }
         },
-        {
-            name: 'music',
-            y: 150
-        },
-        {
-            name: 'education',
-            y: 30
-        },
-        {
-            name: 'sports',
-            y: 50
-        },
-        {
-            name: 'weather',
-            y: 50
-        },
-    ];
-    
-    res.json(newCategory);  
+        (data, response) => {
+            console.log(data);
+            res.json(data);
+        }
+    );
 });
 
 /*GET User active time Data */
-router.get('/activetime', function(req,res,next){
-    const activeTime = [
-            {
-                name: 'Operation Number',
-                data: [20, 50, 34, 20, 90,74, 110,20, 50, 34, 20, 90,74, 110,20, 50, 34, 20, 90,74, 110,67,79,46]
+router.get('/activetime', jsonParser, function(req,res,next){
+    return restClient.methods.userActiveTimeDistribution(
+        {
+            headers: {
+                'Content-Type': 'application/json'
             }
-        ];
-    
-    res.json(activeTime);  
+        },
+        (data, response) => {
+            console.log(data);
+            res.json(data);
+        }
+    );
 });
 
 module.exports = router;
